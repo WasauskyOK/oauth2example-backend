@@ -27,7 +27,7 @@ passport.deserializeUser((id,done)=>{
 passport.use(new GoogleStrategy({
     clientID: process.env.GOOGLE_CLIENT_ID,
     clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-    callbackURL: "/auth/google/redirect",
+    callbackURL: "https://oauth2examplefirst.herokuapp.com/auth/google/redirect",
     scope:["profile"]
 },async (accessToken,refreshToken,profile,done)=>
 {
@@ -53,7 +53,7 @@ passport.use(new GoogleStrategy({
 passport.use('facebook',new FacebookStrategy({
     clientID:process.env.FACEBOOK_CLIENT_ID,
     clientSecret:process.env.FACEBOOK_CLIENT_SECRET,
-    callbackURL:"/auth/facebook/redirect",
+    callbackURL:"https://oauth2examplefirst.herokuapp.com/auth/facebook/redirect",
     profileFields: ['id', 'displayName', 'photos', 'email']
 },async(accessToken,refreshToken,profile,done)=>{ 
     const search=await User.findOne({IdApp:profile.id});
@@ -73,7 +73,7 @@ passport.use('facebook',new FacebookStrategy({
 passport.use('github',new GitHubStrategy({
     clientID:process.env.GITHUB_CLIENT_ID,
     clientSecret:process.env.GITHUB_CLIENT_SECRET,
-    callbackURL:'/auth/github/redirect'
+    callbackURL:'https://oauth2examplefirst.herokuapp.com/auth/github/redirect'
 },async(access_token,refreshToken,profile,done)=>{
     const  search=await User.findOne({IdApp:profile.id});
     if(search)
@@ -93,7 +93,7 @@ passport.use('github',new GitHubStrategy({
 passport.use('linkedin',new LinkedinStrategy({
     clientID: process.env.LINKEDIN_CLIENT_ID,
     clientSecret: process.env.LINKEDIN_CLIENT_SECRET,
-    callbackURL: "/auth/linkedin/redirect",
+    callbackURL: "https://oauth2examplefirst.herokuapp.com/auth/linkedin/redirect",
     scope: ['r_emailaddress', 'r_liteprofile'],
 },async(access_token,refreshToken,profile,done)=>{
     const search=await User.findOne({IdApp:profile.id});
