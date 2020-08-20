@@ -1,0 +1,32 @@
+{
+  "name": "auth",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "cross-env NODE_ENV=development nodemon backend/index",
+    "build": "babel backend -d dist",
+    "start": "cross-env NODE_ENV=production node dist/index"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@babel/cli": "^7.10.5",
+    "@babel/core": "^7.11.4",
+    "@babel/polyfill": "^7.10.4",
+    "@babel/preset-env": "^7.11.0",
+    "@babel/register": "^7.10.5",
+    "@sokratis/passport-linkedin-oauth2": "^2.1.0",
+    "cookie-session": "^1.4.0",
+    "cors": "^2.8.5",
+    "cross-env": "^7.0.2",
+    "express": "^4.17.1",
+    "mongoose": "^5.10.0",
+    "morgan": "^1.10.0",
+    "passport": "^0.4.1",
+    "passport-facebook": "^3.0.0",
+    "passport-github": "^1.1.0",
+    "passport-google-oauth20": "^2.0.0"
+  }
+}
