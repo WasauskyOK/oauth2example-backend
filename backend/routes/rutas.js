@@ -10,7 +10,7 @@ router.get('/google',passport.authenticate('google',
  { scope: ["profile", "email"] }));
 
 router.get('/auth/google/redirect',passport.authenticate('google',{
-    successRedirect:'https://auth2.netlify.app/profile',
+    successRedirect:'http://localhost:3000/profile',
     failureRedirect:'/auth/login/failed'
 })); 
 router.get('/auth/login/success',async (req,resp,next)=>{

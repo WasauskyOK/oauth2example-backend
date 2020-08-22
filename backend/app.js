@@ -27,7 +27,7 @@ config()
     this.app.use(express.json());
     this.app.use(
         cors({
-          origin: "https://auth2.netlify.app", // allow to server to accept request from different origin
+          origin: "http://localhost:3000", // allow to server to accept request from different origin
           //methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
           credentials: true // allow session cookie from browser to pass through
         })
