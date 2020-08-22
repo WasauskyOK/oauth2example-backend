@@ -25,13 +25,13 @@ config()
 {
     this.app.use(morgan("dev"));
     this.app.use(express.json());
-    this.app.use(
-        cors({
-          origin: "http://localhost:3000", // allow to server to accept request from different origin
-          //methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
-          credentials: true // allow session cookie from browser to pass through
-        })
-      );
+    // this.app.use(
+    //     cors({
+    //       origin: "http://localhost:3000", // allow to server to accept request from different origin
+    //       //methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
+    //       credentials: true // allow session cookie from browser to pass through
+    //     })
+    //   );
     this.app.use(cookieSession({
         name:"session",
         keys:[process.env.keySessionCookieKey]
@@ -43,6 +43,14 @@ config()
 }
 routes()
 {
+    var allowCrossDomain = function(req, res, next) {
+        res.header('Access-Control-Allow-Origin', "*");
+        res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
+        res.header('Access-Control-Allow-Headers', 'Content-Type');
+        next();
+    };
+    
+    this.app.use(allowCrossDomain);
     this.app.use(rutas);
     // const  authCheck = (req, res, next) => {
     //     if (!req.user) {
