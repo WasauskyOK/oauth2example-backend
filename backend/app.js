@@ -34,8 +34,7 @@ config()
     this.app.use(passport.session());
     this.app.use(
         cors({
-            
-         origin: "https://auth.choquesaurus.com", // allow to server to accept request from different origin
+          origin: "http://auth.choquesaurus.com", // allow to server to accept request from different origin
           methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
           credentials: true // allow session cookie from browser to pass through
         })
