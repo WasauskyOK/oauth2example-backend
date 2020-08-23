@@ -10,11 +10,13 @@ router.get('/google',passport.authenticate('google',
  { scope: ["profile", "email"] }));
 
 router.get('/auth/google/redirect',passport.authenticate('google',{
-    successRedirect:'http://localhost:3000/profile',
+    successRedirect:'http://localhost:3001/profile',
     failureRedirect:'/auth/login/failed'
 })); 
 router.get('/auth/login/success',async (req,resp,next)=>{
-    if(req.user)
+     res.header('Access-Control-Allow-Origin', "*");
+     res.header('Access-Control-Allow-Headers');
+     if(req.user)
     {
         resp.json({
             success:true,
