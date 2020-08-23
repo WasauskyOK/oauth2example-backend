@@ -4,18 +4,20 @@ const router=Router();
 
 router.get('/',(req,res,next)=>{
     res.send({message:"Hello :D"});
+    res.header('Access-Control-Allow-Origin', "http://localhost:3001");
+     res.header('Access-Control-Allow-Headers');
 });
 //GOOGLE
 router.get('/google',passport.authenticate('google',
- { scope: ["profile", "email"] }));
+ { scope: ["profile", "email"] }))res.header('Access-Control-Allow-Origin', "http://localhost:3001");
+     res.header('Access-Control-Allow-Headers');;
 
 router.get('/auth/google/redirect',passport.authenticate('google',{
     successRedirect:'http://localhost:3001/profile',
     failureRedirect:'/auth/login/failed'
 })); 
 router.get('/auth/login/success',async (req,resp,next)=>{
-     res.header('Access-Control-Allow-Origin', "*");
-     res.header('Access-Control-Allow-Headers');
+     
      if(req.user)
     {
         resp.json({
