@@ -50,7 +50,7 @@ routes()
     //     next();
     // };
     
-    this.app.use(allowCrossDomain);
+   // this.app.use(allowCrossDomain);
     this.app.use(rutas);
     // const  authCheck = (req, res, next) => {
     //     if (!req.user) {
