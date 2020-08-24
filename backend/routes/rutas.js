@@ -17,8 +17,8 @@ router.get('/auth/google/redirect',passport.authenticate('google',{
     failureRedirect:'/auth/login/failed'
 })); 
 router.get('/auth/login/success',async (req,resp,next)=>{
-    res.header('Access-Control-Allow-Origin', "http://localhost:3001");
-    res.header('Access-Control-Allow-Headers');     
+    resp.header('Access-Control-Allow-Origin', "http://localhost:3001");
+    resp.header('Access-Control-Allow-Headers');     
      if(req.user)
     {
         resp.json({
