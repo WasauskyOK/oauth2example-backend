@@ -18,6 +18,7 @@
     "@babel/preset-env": "^7.11.0",
     "@babel/register": "^7.10.5",
     "@sokratis/passport-linkedin-oauth2": "^2.1.0",
+    "cookie-parser": "^1.4.5",
     "cookie-session": "^1.4.0",
     "cors": "^2.8.5",
     "cross-env": "^7.0.2",

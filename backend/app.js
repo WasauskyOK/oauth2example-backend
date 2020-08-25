@@ -11,7 +11,7 @@ import rutas from './routes/rutas';
 import passportSetup from './passport/passport-setup';
 import conexion from './connection/conection';
 import cookieSession from 'cookie-session';
-
+import cookieParser from 'cookie-parser';
 import passport from 'passport';
 
 
@@ -25,19 +25,25 @@ config()
 {
     this.app.use(morgan("dev"));
     this.app.use(express.json());
+    
+    this.app.use(cookieSession({
+        name:"session",
+        keys:[process.env.keySessionCookieKey],
+        maxAge: 24 * 60 * 60 * 100
+    }));
+
+    this.app.use(cookieParser());
+    this.app.use(passport.initialize());
+    this.app.use(passport.session());
     this.app.use(
         cors({
-          origin: "*",//localhost:3000", // allow to server to accept request from different origin
+          origin: "http://localhost:3000",//localhost:3000", // allow to server to accept request from different origin
           methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
           credentials: true // allow session cookie from browser to pass through
         })
       );
-    this.app.use(cookieSession({
-        name:"session",
-        keys:[process.env.keySessionCookieKey]
-    }));
-    this.app.use(passport.initialize());
-    this.app.use(passport.session());
+   
+  
     //this.app.use(cors())
   
 }
@@ -51,7 +57,7 @@ routes()
     // };
     
    // this.app.use(allowCrossDomain);
-    this.app.use(rutas);
+    this.app.use('/',rutas);
     // const  authCheck = (req, res, next) => {
     //     if (!req.user) {
     //       res.status(401).json({

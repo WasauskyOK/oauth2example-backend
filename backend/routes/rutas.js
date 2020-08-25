@@ -2,10 +2,27 @@ import {Router} from 'express';
 import passport from 'passport';
 const router=Router();
 
-router.get('/',(req,res,next)=>{
-    res.send({message:"Hello :D"});
-    res.header('Access-Control-Allow-Origin', "http://localhost:3001");
-     res.header('Access-Control-Allow-Headers');
+const authCheck = (req, res, next) => {
+    if (!req.user) {
+      res.status(401).json({
+        authenticated: false,
+        message: "user has not been authenticated"
+      });
+    } else {
+      next();
+    }
+  };
+
+router.get('/',authCheck,(req,res)=>{
+    res.status(200).json({
+        authenticated: true,
+        message: "user successfully authenticated",
+        user: req.user,
+        cookies: req.cookies
+      });
+    //res.send({message:"Hello :D"});
+    // res.header('Access-Control-Allow-Origin', "http://localhost:3001");
+    //  res.header('Access-Control-Allow-Headers');
 });
 //GOOGLE
 router.get('/google',passport.authenticate('google',
@@ -13,15 +30,15 @@ router.get('/google',passport.authenticate('google',
 
 
 router.get('/auth/google/redirect',passport.authenticate('google',{
-    successRedirect:'http://localhost:3001/profile',
+    successRedirect:'http://localhost:3000',
     failureRedirect:'/auth/login/failed'
 })); 
-router.get('/auth/login/success',async (req,resp,next)=>{
-    resp.header('Access-Control-Allow-Origin', "http://localhost:3001");
-    resp.header('Access-Control-Allow-Headers');     
+router.get('/auth/login/success',(req,res)=>{
+    // res.header('Access-Control-Allow-Origin', "http://localhost:3001");
+    // res.header('Access-Control-Allow-Headers');     
      if(req.user)
     {
-        resp.json({
+        res.json({
             success:true,
             message:'user has successfully authenticated',
             user:req.user,
@@ -30,22 +47,22 @@ router.get('/auth/login/success',async (req,resp,next)=>{
     }
 });
 
-router.get('/auth/login/failed',(req,resp,next)=>{
-    resp.status(401).json({
+router.get('/auth/login/failed',(req,res)=>{
+    res.status(401).json({
         success:false,
         message:'User failed  to authenticate'
     });
 });
-router.get('/logout',async (req,resp,next)=>{
+router.get('/logout',async (req,res)=>{
 //    await  console.log('REQUESITO ELIMINAR 1',req.user)
-    resp.send({
+    res.send({
     success:false,
-    message:'user  is  not authenticated'
+    message:'logout'
     }); 
 //     await delete  req.user;
 //     //await req.logout();
     
-    console.log('requesisto elimiinar 2',req.user);
+    //console.log('requesisto elimiinar 2',req.user);
 });
 
 //FACEBOOK
