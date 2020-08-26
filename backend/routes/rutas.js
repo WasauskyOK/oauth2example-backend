@@ -38,8 +38,8 @@ router.get('/auth/google/redirect',passport.authenticate('google',{
 })); 
 router.get('/auth/login/success',(req,res)=>{
     //res.header('Access-Control-Allow-Origin', "*");
-     //res.header("Access-Control-Allow-Headers", "Access-Control-Allow-Headers, Origin, Accept, X-Requested-With, Content-Type, Access-Control-Request-Method, Access-Control-Request-Headers, Authorization");
-     res.header("Access-Control-Allow-Headers","*")    
+     res.header("Access-Control-Allow-Headers", "Access-Control-Allow-Headers, Origin, Accept, X-Requested-With, Content-Type, Access-Control-Request-Method, Access-Control-Request-Headers, Authorization");
+     //res.header("Access-Control-Allow-Headers","*")    
      if(req.user)
     {
         res.json({
