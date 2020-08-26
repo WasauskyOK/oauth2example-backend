@@ -38,7 +38,7 @@ router.get('/auth/google/redirect',passport.authenticate('google',{
 })); 
 router.get('/auth/login/success',(req,res)=>{
     // res.header('Access-Control-Allow-Origin', "http://localhost:3001");
-    // res.header('Access-Control-Allow-Headers');     
+     res.header('Access-Control-Allow-Headers');     
      if(req.user)
     {
         res.json({
