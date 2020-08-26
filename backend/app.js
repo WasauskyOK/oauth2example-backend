@@ -37,7 +37,8 @@ config()
     this.app.use(passport.session());
     this.app.use(
         cors({
-          origin: "http://localhost:3000",//localhost:3000", // allow to server to accept request from different origin
+            origin: "*",
+            //origin: "http://localhost:3000",//localhost:3000", // allow to server to accept request from different origin
           methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
           credentials: true // allow session cookie from browser to pass through
         })
