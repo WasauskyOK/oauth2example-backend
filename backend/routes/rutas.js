@@ -13,6 +13,9 @@ const authCheck = (req, res, next) => {
     }
   };
 
+router.get('/saludar',(req,res)=>{
+  res.json({message:"Buenos dias , Success"})
+});
 router.get('/',authCheck,(req,res)=>{
     res.status(200).json({
         authenticated: true,
@@ -45,6 +48,10 @@ router.get('/auth/login/success',(req,res)=>{
             cookies:req.cookies
         });
     }
+    res.status(401).json({
+      success:false,
+      message:'User failed  to authenticate'
+  });
 });
 
 router.get('/auth/login/failed',(req,res)=>{
