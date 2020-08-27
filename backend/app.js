@@ -28,7 +28,8 @@ config()
     
     this.app.use(cookieSession({
         name:"session",
-        sameSite:"none",  
+        sameSite:"none",
+        secure:true,  
         keys:[process.env.keySessionCookieKey],
         maxAge: 24 * 60 * 60 * 100
     }));
