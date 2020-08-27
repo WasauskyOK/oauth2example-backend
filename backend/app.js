@@ -28,6 +28,7 @@ config()
     
     this.app.use(cookieSession({
         name:"session",
+        sameSite:"none",  
         keys:[process.env.keySessionCookieKey],
         maxAge: 24 * 60 * 60 * 100
     }));
@@ -40,6 +41,7 @@ config()
             origin: "http://localhost:3000",
             //origin: "http://localhost:3000",//localhost:3000", // allow to server to accept request from different origin
           methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
+          
           credentials: true // allow session cookie from browser to pass through
         })
       );
