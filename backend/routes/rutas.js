@@ -37,8 +37,8 @@ router.get('/auth/google/redirect',passport.authenticate('google',{
     failureRedirect:'/auth/login/failed'
 })); 
 router.get('/auth/login/success',(req,res)=>{
-    const cookie= "session;samesite=none;secure";
-    res.setHeader("set-cookie",[cookie])
+    //const cookie= "session;samesite=none;secure";
+    //res.setHeader("set-cookie",[cookie])
     //res.header('Access-Control-Allow-Origin', "*");
      res.header("Access-Control-Allow-Headers", "Access-Control-Allow-Headers, Origin, Accept, X-Requested-With, Content-Type, Access-Control-Request-Method, Access-Control-Request-Headers, Authorization");
      //res.header("Access-Control-Allow-Headers","*")    
