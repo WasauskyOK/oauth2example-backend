@@ -28,6 +28,8 @@ config()
     
     this.app.use(cookieSession({
         name:"session",
+        sameSite:"none",
+        secure:true,
         //sameSite:"none",
         //secure:true,  
         keys:[process.env.keySessionCookieKey],
