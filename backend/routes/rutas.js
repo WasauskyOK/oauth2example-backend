@@ -39,8 +39,8 @@ router.get('/auth/google/redirect',passport.authenticate('google',{
 router.get('/auth/login/success',(req,res)=>{
     //let cookie= "session;samesite=none;secure"
     let cookie1,cookie2;
-    cookie1=`session1=${req.cookies.session};samesite=none;secure`;
-    cookie2=`session2=${req.cookies["session.sig"]};samesite=none;secure`;
+    cookie1=`session=${req.cookies.session};samesite=none;secure;path=/;httponly=true`;
+    cookie2=`session.sig=${req.cookies["session.sig"]};samesite=none;secure;path=/;httponly=true`;
     
     res.setHeader("set-cookie",[cookie1,cookie2])
     //res.header('Access-Control-Allow-Origin', "*");
