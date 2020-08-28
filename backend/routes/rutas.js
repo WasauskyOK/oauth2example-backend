@@ -38,9 +38,12 @@ router.get('/auth/google/redirect',passport.authenticate('google',{
 })); 
 router.get('/auth/login/success',(req,res)=>{
     //let cookie= "session;samesite=none;secure"
-    let cookie1,cookie2;
-    cookie1=`session=${req.cookies.session};samesite=none;secure;path=/;httponly=true`;
-    cookie2=`session.sig=${req.cookies["session.sig"]};samesite=none;secure;path=/;httponly=true`;
+    
+    let date,add_year,cookie1,cookie2;
+    date=new Date();
+    add_year=new Date(date.setFullYear(date.getFullYear()+2)).toDateString();
+    cookie1=`session=${req.cookies.session};samesite=none;secure;path=/;expires/max-age=${add_year};httponly=true`;
+    cookie2=`session.sig=${req.cookies["session.sig"]};samesite=none;secure;expires/max-age=${add_year};path=/;httponly=true`;
     
     res.setHeader("set-cookie",[cookie1,cookie2])
     //res.header('Access-Control-Allow-Origin', "*");
