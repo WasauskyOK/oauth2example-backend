@@ -33,7 +33,7 @@ router.get('/google',passport.authenticate('google',
 
 
 router.get('/auth/google/redirect',passport.authenticate('google',{
-    successRedirect:'http://localhost:3000',
+    successRedirect:'http://localhost:3000/profile',
     failureRedirect:'/auth/login/failed'
 })); 
 router.get('/auth/login/success',(req,res)=>{
