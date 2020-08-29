@@ -41,7 +41,7 @@ config()
     this.app.use(passport.session());
     this.app.use(
         cors({
-            origin: "https://auth.choquesarus.com",
+            origin: "http://auth.choquesarus.com",
             //origin: "http://localhost:3000",//localhost:3000", // allow to server to accept request from different origin
           methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
           
