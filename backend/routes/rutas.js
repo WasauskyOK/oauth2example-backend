@@ -33,7 +33,7 @@ router.get('/google',passport.authenticate('google',
 
 
 router.get('/auth/google/redirect',passport.authenticate('google',{
-    successRedirect:'http://localhost:3000/profile',
+    successRedirect:'auth.choquesaurus.com/profile',
     failureRedirect:'/auth/login/failed'
 })); 
 router.get('/auth/login/success',(req,res)=>{
@@ -80,7 +80,7 @@ router.get('/logout',async (req,res)=>{
 //     await delete  req.user;
 //     //await req.logout();
     
-    //console.log('requesisto elimiinar 2',req.user);
+    
 });
 
 //FACEBOOK
@@ -89,20 +89,20 @@ router.get('/facebook',passport.authenticate('facebook',
  { scope: ['email'] }
  ));
 router.get('/auth/facebook/redirect',passport.authenticate('facebook',{
-    successRedirect:'https://auth.choquesaurus.com/profile',
+    successRedirect:'auth.choquesaurus.com/profile',
     failureRedirect:'/auth/login/failed'
 }));
 
 
 router.get('/github',passport.authenticate('github'));
 router.get('/auth/github/redirect',passport.authenticate('github',{
-    successRedirect:'https://auth.choquesaurus.com/profile',
+    successRedirect:'auth.choquesaurus.com/profile',
     failureRedirect:'/auth/login/failed'
 }));
 
 router.get('/linkedin',passport.authenticate('linkedin'));
   router.get('/auth/linkedin/redirect',passport.authenticate('linkedin', {
-    successRedirect: 'https://auth.choquesaurus.com/profile',
+    successRedirect: 'auth.choquesaurus.com/profile',
     failureRedirect: '/auth/login/failed'
   }));
 export default router;
